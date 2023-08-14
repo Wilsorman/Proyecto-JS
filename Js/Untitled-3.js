@@ -2,7 +2,7 @@ const formulario = prompt("Bienvenido, si desea dejar su información de contact
 
 if (formulario === "y") {
     alert("Decidió dejar su información de contacto, por favor a continuación ingrese los siguientes datos:");
-    
+
     class Contacto {
         constructor(nombre, apellido, email, telefono, motivo_contacto, puntuacion) {
             this.nombre = nombre;
@@ -23,30 +23,58 @@ if (formulario === "y") {
     }
     let telefono = prompt("Ingrese su Teléfono");
 
-    while (isNaN(telefono)){
+    while (isNaN(telefono)) {
         alert("Ingrese un número de teléfono válido.");
-        telefono = prompt("Ingrese su Teléfono");    }
+        telefono = prompt("Ingrese su Teléfono");
+    }
 
     const motivo_contacto = prompt("Ingrese el motivo por el cual se contactó");
     let puntuacion = null;
-    
 
 
-while (puntuacion === null ){
-    const valor = prompt("Del 1 al 10 cual fue su experiencia con la pagina *REQUERIDO*")
 
-    if (!isNaN(valor) && valor >= 1 && valor <= 10 ){
-        puntuacion = valor ;
-        alert("Muchas gracias nos pondremos en contacto a la brevedad.");
+    while (puntuacion === null) {
+        const valor = prompt("Del 1 al 10 cual fue su experiencia con la pagina *REQUERIDO*")
 
+        if (!isNaN(valor) && valor >= 1 && valor <= 10) {
+            puntuacion = valor;
+        }
+
+        else {
+            alert("Por favor, ingrese un valor numérico válido.");
+        }
+        const contacto = new Contacto(nombre, apellido, email, telefono, motivo_contacto, puntuacion);
+
+        const funcion_new = prompt("¿Desea probar nuestra nueva calculadora de iva? ingrese nuevamente Y para aceptar de lo contrario N ").toLowerCase()
+
+        if (funcion_new === "y") {
+            let continuar = true
+            while (continuar) {
+                const precioSinIVA = parseFloat(prompt("Ingrese el precio sin IVA:"));
+
+                if (!isNaN(precioSinIVA)) {
+                    const iva = precioSinIVA * (21 / 100);
+                    const precioConIVA = precioSinIVA + iva;
+                    alert(`Precio con IVA: $${precioConIVA}`);
+
+                    const continuarRespuesta = prompt("¿Desea continuar calculando el IVA? (y/n)").toLowerCase();
+                    if (continuarRespuesta === 'n') {
+                        continuar = false;
+                    }
+
+                }
+                else {
+                    alert("Por favor, ingrese un precio válido.");
+                }
+            }
+        }
+        else{
+            alert("Saludos");
+
+        }
     }
+} 
 
-    else{
-        alert("Por favor, ingrese un valor numérico válido.");
-    }
-    const contacto = new Contacto(nombre, apellido, email, telefono, motivo_contacto,puntuacion);
-
-}
-} else {
+else {
     alert("Saludos");
 }
