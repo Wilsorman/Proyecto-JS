@@ -43,6 +43,7 @@ if (formulario === "y") {
         else {
             alert("Por favor, ingrese un valor numérico válido.");
         }
+        }
         const contacto = new Contacto(nombre, apellido, email, telefono, motivo_contacto, puntuacion);
 
         const funcion_new = prompt("¿Desea probar nuestra nueva calculadora de iva? ingrese nuevamente Y para aceptar de lo contrario N ").toLowerCase()
@@ -73,7 +74,6 @@ if (formulario === "y") {
 
         }
     }
-} 
 
 else {
     alert("Saludos");
