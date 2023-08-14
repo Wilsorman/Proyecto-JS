@@ -54,13 +54,14 @@ if (formulario === "y") {
                 const precioSinIVA = parseFloat(prompt("Ingrese el precio sin IVA:"));
 
                 if (!isNaN(precioSinIVA)) {
-                    const iva = precioSinIVA * (21 / 100);
-                    const precioConIVA = precioSinIVA + iva;
-                    alert(`Precio con IVA: $${precioConIVA}`);
+                    const preciofinal= calc_iva(precioSinIVA)
+                    alert(`Precio con IVA: $${preciofinal}`);
 
                     const continuarRespuesta = prompt("¿Desea continuar calculando el IVA? (y/n)").toLowerCase();
                     if (continuarRespuesta === 'n') {
                         continuar = false;
+                        alert("Muchas gracias por probar esta utilidad,esperamos que le haya sido util. \n Saludos!");
+
                     }
 
                 }
@@ -70,11 +71,17 @@ if (formulario === "y") {
             }
         }
         else{
-            alert("Saludos");
+            alert("Esperamos que en algun momento desde probarla, saludos!");
 
         }
     }
 
 else {
     alert("Saludos");
+}
+
+function calc_iva(precio){
+    const iva = precio * (21 / 100);
+    const precioConIVA = precio + iva;
+    return precioConIVA
 }
