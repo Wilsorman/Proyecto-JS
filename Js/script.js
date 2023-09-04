@@ -1,3 +1,4 @@
+const calculosIVA = [];
 const formulario = prompt("Bienvenido, si desea dejar su información de contacto ingrese 'Y', de lo contrario ingrese 'N'").toLowerCase();
 
 if (formulario === "y") {
@@ -54,26 +55,32 @@ if (formulario === "y") {
                 const precioSinIVA = parseFloat(prompt("Ingrese el precio sin IVA:"));
 
                 if (!isNaN(precioSinIVA)) {
-                    const preciofinal= calc_iva(precioSinIVA)
-                    alert(`Precio con IVA: $${preciofinal}`);
+                    const precioConIVA = calc_iva(precioSinIVA);
+alert(`Precio con IVA: $${precioConIVA}`);
+                    
+                    calculosIVA.push({ precioSinIVA, precioConIVA });
+
 
                     const continuarRespuesta = prompt("¿Desea continuar calculando el IVA? (y/n)").toLowerCase();
                     if (continuarRespuesta === 'n') {
-                        continuar = false;
-                        alert("Muchas gracias por probar esta utilidad,esperamos que le haya sido util. \n Saludos!");
-
-                    }
+                        continuar= false;
+                     }
+                    
+                
 
                 }
                 else {
                     alert("Por favor, ingrese un precio válido.");
                 }
-            }
+            }   
+
         }
         else{
             alert("Esperamos que en algun momento desde probarla, saludos!");
 
         }
+        buscarCalculoAnterior() 
+
     }
 
 else {
@@ -84,4 +91,22 @@ function calc_iva(precio){
     const iva = precio * (21 / 100);
     const precioConIVA = precio + iva;
     return precioConIVA
+}
+
+function buscarCalculoAnterior() {
+    const buscarCalculoAnterior = prompt("¿Desea buscar un cálculo anterior? Ingrese 'Y' para buscar o 'N' para salir.").toLowerCase();
+
+    if (buscarCalculoAnterior === 'y') {
+        if (calculosIVA.length === 0) {
+            alert("No hay cálculos anteriores para mostrar.");
+        } else {
+            // Utilizar map() para mostrar los cálculos anteriores
+            alert("Lista de cálculos anteriores:");
+            calculosIVA.map((calculo, index) => {
+                alert(`${index + 1}. Precio sin IVA: $${calculo.precioSinIVA}, Precio con IVA: $${calculo.precioConIVA}`);
+            });
+        }
+    } else {
+        alert("Gracias por usar nuestro servicio. ¡Hasta luego!");
+    }
 }
