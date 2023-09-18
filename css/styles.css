@@ -1,25 +1,26 @@
-.mainFormulario{
+.mainFormulario {
 
     display: grid;
     grid-column: 1;
     grid-template-columns: 1fr;
     margin: auto;
-    max-width: 300px;
+    padding-top: 10%;
+    width: 400px;
     text-align: center;
-    
-    
-    }
-    
-    .card{
-        background-color: #97a8c6;
-        border: 3px solid #000000;
-        padding: 10px;
-        box-shadow: 0 0.2rem 3rem -1rem;
-    
-    
-    }
-    
-    .form-control{
-        background-color: #000000;
-        color:white;
-    }
+
+
+}
+
+.card {
+    background-color: #97a8c6;
+    border: 3px solid #000000;
+    padding: 10px;
+    box-shadow: 0 0.2rem 3rem -1rem;
+
+
+}
+
+.form-control {
+    background-color: #000000;
+    color: white;
+}
